@@ -1,0 +1,130 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Sportzzbook design system — "Frosted Scoreboard".
+ * Deep pitch greens, restrained jersey amber, frosted glass panels.
+ * All colors are oklch tokens; never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  --color-pitch: var(--pitch);
+  --color-pitch-dark: var(--pitch-dark);
+  --color-jersey: var(--jersey);
+  --color-turf: var(--turf);
+  --color-ice: var(--ice);
+  --color-ink: var(--ink);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --pitch: oklch(0.29 0.062 162);
+  --pitch-dark: oklch(0.22 0.052 162);
+  --jersey: oklch(0.775 0.155 70);
+  --turf: oklch(0.635 0.135 156);
+  --ice: oklch(0.947 0.016 162);
+  --ink: oklch(0.25 0.048 162);
+
+  --background: var(--pitch-dark);
+  --foreground: var(--ice);
+  --card: oklch(0.29 0.062 162 / 60%);
+  --card-foreground: var(--ice);
+  --popover: var(--pitch);
+  --popover-foreground: var(--ice);
+  --primary: var(--jersey);
+  --primary-foreground: var(--ink);
+  --secondary: oklch(1 0 0 / 8%);
+  --secondary-foreground: var(--ice);
+  --muted: oklch(1 0 0 / 6%);
+  --muted-foreground: oklch(0.947 0.016 162 / 55%);
+  --accent: var(--turf);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.62 0.2 25);
+  --destructive-foreground: var(--ice);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: var(--jersey);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+}
+
+@utility panel {
+  background-color: oklch(1 0 0 / 5%);
+  box-shadow: inset 0 0 0 1px oklch(1 0 0 / 10%);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-2xl);
+}
+
+@utility eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--muted-foreground);
+}
+
+@keyframes fillup {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--w);
+  }
+}
+
+@utility stat-fill {
+  animation: fillup 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
