@@ -1,13 +1,21 @@
 import { Link } from "@tanstack/react-router";
 import { useStore, toggleLike, addComment } from "@/lib/store";
 import { useState } from "react";
+import rahulImg from "@/assets/athlete-rahul.jpg";
+import arjunImg from "@/assets/athlete-arjun.jpg";
+import sanaImg from "@/assets/athlete-sana.jpg";
+import nehaImg from "@/assets/athlete-neha.jpg";
+import imranImg from "@/assets/coach-imran.jpg";
 
+// Fixed: these now point at real imported (bundled) images instead of raw
+// "/src/assets/..." string paths, which only worked by accident in dev mode
+// and broke once Vite built/hashed the assets for production.
 const AVATAR_MAP: Record<string, string> = {
-  "Rahul Sharma": "/src/assets/athlete-rahul.jpg",
-  "Arjun Mehta": "/src/assets/athlete-arjun.jpg",
-  "Sana Qureshi": "/src/assets/athlete-sana.jpg",
-  "Neha Kapoor": "/src/assets/athlete-neha.jpg",
-  "Imran Khan": "/src/assets/coach-imran.jpg",
+  "Rahul Sharma": rahulImg,
+  "Arjun Mehta": arjunImg,
+  "Sana Qureshi": sanaImg,
+  "Neha Kapoor": nehaImg,
+  "Imran Khan": imranImg,
 };
 
 // Fallback images by sport, used when a post has no image of its own.
